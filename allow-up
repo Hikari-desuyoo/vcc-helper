@@ -1,0 +1,24 @@
+#!/bin/bash
+
+project_dir=/tmp/DefaultCompany/Portfolio
+scene_name=main
+wrong_file=$project_dir/scene-standalonewindows64-$scene_name.vrcw
+right_file=$project_dir/scene-StandaloneWindows64-${scene_name^}.vrcw
+
+while :
+do
+    if [ -f $wrong_file ]; then
+        echo "Scene file with wrong name $wrong_file spotted"
+
+        if [ -f $right_file ]; then
+            echo "Correction already applied"
+        else
+            ln -s $wrong_file $right_file
+            echo "Correction ln -s $wrong_file $right_file applied"
+        fi
+    else
+        echo "Scene file with wrong name $wrong_file not spotted"
+    fi
+
+	sleep 1
+done
