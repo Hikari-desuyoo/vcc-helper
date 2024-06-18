@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Function to remove '--' at the beginning of arguments
+clean_args=()
+for arg in "$@"; do
+    if [[ "$arg" != "--" ]]; then
+        clean_args+=("$arg")
+    fi
+done
+
+echo RUNNING: unityhub "${clean_args[@]}"
+
+# Pass the cleaned arguments to unityhub
+unityhub "${clean_args[@]}"
